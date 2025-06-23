@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Isotope from 'isotope-layout';
 import WebpImage from '../WebpImage/WebpImage';
 
@@ -6,7 +6,7 @@ const IsotopeContainer = (props) => {
   const { filters, listsIsotope } = props;
 
   // init one ref to store the future isotope object
-  const isotope = React.useRef;
+  const isotope = React.useRef(null);
   // store the filter keyword in a state
   const [filterKey, setFilterKey] = React.useState('*');
   const [active, setActive] = React.useState('*');
@@ -14,12 +14,13 @@ const IsotopeContainer = (props) => {
   // initialize an Isotope object with configs
   useEffect(() => {
     isotope.current = new Isotope('.filter-container', {
-      itemSelector: '.filter-item',
-      layoutMode: 'fitRows',
+      itemSelector: '.isotope-item',
+      layoutMode: 'masonry',
     });
+    isotope.current?.reloadItems();
     // cleanup
     return () => isotope.current?.destroy();
-  }, []);
+  });
 
   // handling filter key change
   useEffect(() => {
@@ -35,11 +36,11 @@ const IsotopeContainer = (props) => {
   return (
     <div className="isotope-layout">
       <ul className="portfolio-filters isotope-filters">
-        {filters.map((filter) => (
+        {filters.map((filter, index) => (
           <li
-            key={filter.key}
+            key={index}
             onClick={handleFilterKeyChange(filter.key)}
-            className={active == filter.key ? 'filter-active' : ''}
+            className={active === filter.key ? 'filter-active' : ''}
           >
             {filter.name}
           </li>
@@ -47,8 +48,9 @@ const IsotopeContainer = (props) => {
       </ul>
 
       <div className="row gy-4 isotope-container filter-container">
-        {listsIsotope.map((list) => (
+        {listsIsotope.map((list, index) => (
           <div
+            key={index}
             className={
               'col-lg-4 col-md-6 portfolio-item isotope-item filter-item ' +
               list.filter
@@ -59,15 +61,20 @@ const IsotopeContainer = (props) => {
               alt={list.name}
               className="img-fluid"
               style={{}}
+              loadingLazy={false}
             />
 
-            <div class="portfolio-info">
+            <div className="portfolio-info">
               <h3>{list.name}</h3>
               <p>{list.description}</p>
             </div>
             {list.link ? (
-              <a href="{lsit.link}" class="details-link" title="More Details">
-                <i class="bi bi-link-45deg"></i>
+              <a
+                href="{lsit.link}"
+                className="details-link"
+                title="More Details"
+              >
+                <i className="bi bi-link-45deg"></i>
               </a>
             ) : (
               ''

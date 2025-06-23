@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-const WebpImage = ({ src, alt = '', className = '', style = {} }) => {
+const WebpImage = ({
+  src,
+  alt = '',
+  className = '',
+  style = {},
+  loadingLazy = true,
+}) => {
   const [webpUrl, setWebpUrl] = useState(null);
 
   useEffect(() => {
@@ -22,7 +28,7 @@ const WebpImage = ({ src, alt = '', className = '', style = {} }) => {
           setWebpUrl(blobUrl);
         },
         'image/webp',
-        0.8 // качество
+        0.8 // quality
       );
     };
 
@@ -38,7 +44,7 @@ const WebpImage = ({ src, alt = '', className = '', style = {} }) => {
         URL.revokeObjectURL(webpUrl);
       }
     };
-  }, [src]);
+  }, [webpUrl, src]);
 
   return (
     <>
@@ -48,10 +54,10 @@ const WebpImage = ({ src, alt = '', className = '', style = {} }) => {
           alt={alt}
           className={className}
           style={style}
-          loading="lazy"
+          loading={loadingLazy ? 'lazy' : undefined}
         />
       ) : (
-        <span>Загрузка изображения…</span>
+        <span>Loading image…</span>
       )}
     </>
   );

@@ -1,7 +1,10 @@
-function Services() {
+function Services() { 
   return (
-    <section id="services" class="services section light-background">
-      <div class="container section-title" data-aos="fade-up">
+    <section id="services" className="services section light-background">
+      <div
+        className="container section-title aos-init aos-animate"
+        data-aos="fade-up"
+      >
         <span>Services</span>
         <h2>Services</h2>
         <p>
@@ -10,16 +13,16 @@ function Services() {
         </p>
       </div>
 
-      <div class="container">
-        <div class="row gy-4">
+      <div className="container">
+        <div className="row gy-4">
           <div
-            class="col-lg-4 col-md-6"
+            className="col-lg-4 col-md-6 aos-init aos-animate"
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-activity"></i>
+            <div className="service-item position-relative">
+              <div className="icon">
+                <i className="bi bi-activity"></i>
               </div>
               <h3>Nesciunt Mete</h3>
               <p>
@@ -31,13 +34,13 @@ function Services() {
           </div>
 
           <div
-            class="col-lg-4 col-md-6"
+            className="col-lg-4 col-md-6"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-broadcast"></i>
+            <div className="service-item position-relative">
+              <div className="icon">
+                <i className="bi bi-broadcast"></i>
               </div>
               <h3>Eosle Commodi</h3>
               <p>
@@ -48,13 +51,13 @@ function Services() {
           </div>
 
           <div
-            class="col-lg-4 col-md-6"
+            className="col-lg-4 col-md-6"
             data-aos="fade-up"
             data-aos-delay="300"
           >
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-easel"></i>
+            <div className="service-item position-relative">
+              <div className="icon">
+                <i className="bi bi-easel"></i>
               </div>
               <h3>Ledo Markt</h3>
               <p>
@@ -65,13 +68,13 @@ function Services() {
           </div>
 
           <div
-            class="col-lg-4 col-md-6"
+            className="col-lg-4 col-md-6"
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
+            <div className="service-item position-relative">
+              <div className="icon">
+                <i className="bi bi-bounding-box-circles"></i>
               </div>
               <h3>Asperiores Commodit</h3>
               <p>
@@ -82,13 +85,13 @@ function Services() {
           </div>
 
           <div
-            class="col-lg-4 col-md-6"
+            className="col-lg-4 col-md-6"
             data-aos="fade-up"
             data-aos-delay="500"
           >
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
+            <div className="service-item position-relative">
+              <div className="icon">
+                <i className="bi bi-calendar4-week"></i>
               </div>
               <h3>Velit Doloremque</h3>
               <p>
@@ -99,13 +102,13 @@ function Services() {
           </div>
 
           <div
-            class="col-lg-4 col-md-6"
+            className="col-lg-4 col-md-6"
             data-aos="fade-up"
             data-aos-delay="600"
           >
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
+            <div className="service-item position-relative">
+              <div className="icon">
+                <i className="bi bi-chat-square-text"></i>
               </div>
               <h3>Dolori Architecto</h3>
               <p>

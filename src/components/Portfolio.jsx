@@ -3,8 +3,8 @@ import filterIsotope from './Isotope/filterIsotope';
 import listIsotope from './Isotope/listIsotope';
 function Portfolio() {
   return (
-    <section id="portfolio" class="portfolio section">
-      <div class="container section-title" data-aos="fade-up">
+    <section id="portfolio" className="portfolio section">
+      <div className="container section-title" data-aos="fade-up">
         <span>Portfolio</span>
         <h2>Portfolio</h2>
         <p>
@@ -12,7 +12,7 @@ function Portfolio() {
           consectetur velit
         </p>
       </div>
-      <div class="container">
+      <div className="container">
         <IsotopeContainer filters={filterIsotope} listsIsotope={listIsotope} />
       </div>
     </section>
