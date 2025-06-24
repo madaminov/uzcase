@@ -1,4 +1,42 @@
-function Services() { 
+const listServices = [
+  {
+    title: 'Startup Prototypes',
+    description:
+      'Quickly launch your MVP using modern low-code tools. Perfect for fast market testing.',
+    icon: 'bi-activity',
+  },
+  {
+    title: 'Startup Support',
+    description:
+      'From first lines of code to scaling — we guide your tech journey with care.',
+    icon: 'bi-broadcast',
+  },
+  {
+    title: 'Custom Applications',
+    description:
+      'Full-featured apps built from scratch with performance and usability in mind.',
+    icon: 'bi-easel',
+  },
+  {
+    title: 'Web Applications',
+    description:
+      'Responsive, scalable, and future-proof — designed to grow with your business.',
+    icon: 'bi-bounding-box-circles',
+  },
+  {
+    title: 'Mobile Development',
+    description:
+      'Native and hybrid mobile apps tailored to your product goals.',
+    icon: 'bi-phone',
+  },
+  {
+    title: 'Corporate Websites',
+    description:
+      'Conversion-focused sites that reflect your brand and drive results.',
+    icon: 'bi-chat-square-text',
+  },
+];
+function Services() {
   return (
     <section id="services" className="services section light-background">
       <div
@@ -7,116 +45,27 @@ function Services() {
       >
         <span>Services</span>
         <h2>Services</h2>
-        <p>
-          Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-          consectetur velit
-        </p>
+        <p>What we can build for your business</p>
       </div>
 
       <div className="container">
         <div className="row gy-4">
-          <div
-            className="col-lg-4 col-md-6 aos-init aos-animate"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div className="service-item position-relative">
-              <div className="icon">
-                <i className="bi bi-activity"></i>
+          {listServices.map((list, index) => (
+            <div
+              key={index}
+              className="col-lg-4 col-md-6 aos-init aos-animate"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div className="service-item position-relative">
+                <div className="icon">
+                  <i className={'bi ' + list.icon}></i>
+                </div>
+                <h3>{list.title}</h3>
+                <p>{list.description}</p>
               </div>
-              <h3>Nesciunt Mete</h3>
-              <p>
-                Provident nihil minus qui consequatur non omnis maiores. Eos
-                accusantium minus dolores iure perferendis tempore et
-                consequatur.
-              </p>
             </div>
-          </div>
-
-          <div
-            className="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div className="service-item position-relative">
-              <div className="icon">
-                <i className="bi bi-broadcast"></i>
-              </div>
-              <h3>Eosle Commodi</h3>
-              <p>
-                Ut autem aut autem non a. Sint sint sit facilis nam iusto sint.
-                Libero corrupti neque eum hic non ut nesciunt dolorem.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <div className="service-item position-relative">
-              <div className="icon">
-                <i className="bi bi-easel"></i>
-              </div>
-              <h3>Ledo Markt</h3>
-              <p>
-                Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus
-                ea aut. Vel qui id voluptas adipisci eos earum corrupti.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <div className="service-item position-relative">
-              <div className="icon">
-                <i className="bi bi-bounding-box-circles"></i>
-              </div>
-              <h3>Asperiores Commodit</h3>
-              <p>
-                Non et temporibus minus omnis sed dolor esse consequatur.
-                Cupiditate sed error ea fuga sit provident adipisci neque.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="500"
-          >
-            <div className="service-item position-relative">
-              <div className="icon">
-                <i className="bi bi-calendar4-week"></i>
-              </div>
-              <h3>Velit Doloremque</h3>
-              <p>
-                Cumque et suscipit saepe. Est maiores autem enim facilis ut aut
-                ipsam corporis aut. Sed animi at autem alias eius labore.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="600"
-          >
-            <div className="service-item position-relative">
-              <div className="icon">
-                <i className="bi bi-chat-square-text"></i>
-              </div>
-              <h3>Dolori Architecto</h3>
-              <p>
-                Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque
-                non et debitis iure. Corrupti recusandae ducimus enim.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

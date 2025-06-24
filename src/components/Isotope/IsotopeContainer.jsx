@@ -1,28 +1,31 @@
 import React, { useEffect } from 'react';
-import Isotope from 'isotope-layout';
+import imagesLoaded from 'imagesloaded';
 import WebpImage from '../WebpImage/WebpImage';
+import Isotope from 'isotope-layout';
 
 const IsotopeContainer = (props) => {
   const { filters, listsIsotope } = props;
 
-  // init one ref to store the future isotope object
   const isotope = React.useRef(null);
-  // store the filter keyword in a state
+
   const [filterKey, setFilterKey] = React.useState('*');
   const [active, setActive] = React.useState('*');
 
-  // initialize an Isotope object with configs
   useEffect(() => {
-    isotope.current = new Isotope('.filter-container', {
-      itemSelector: '.isotope-item',
-      layoutMode: 'masonry',
+    const container = document.querySelector('.filter-container');
+    const imgLoad = imagesLoaded(container, () => {
+      isotope.current = new Isotope(container, {
+        itemSelector: '.isotope-item',
+        layoutMode: 'masonry',
+      });
     });
-    isotope.current?.reloadItems();
-    // cleanup
-    return () => isotope.current?.destroy();
+
+    return () => {
+      isotope.current?.destroy();
+      imgLoad?.off?.(); // очистка imagesLoaded
+    };
   });
 
-  // handling filter key change
   useEffect(() => {
     if (filterKey === '*') isotope.current?.arrange({ filter: `*` });
     else isotope.current?.arrange({ filter: `.${filterKey}` });
@@ -69,11 +72,7 @@ const IsotopeContainer = (props) => {
               <p>{list.description}</p>
             </div>
             {list.link ? (
-              <a
-                href="{lsit.link}"
-                className="details-link"
-                title="More Details"
-              >
+              <a href={list.link} className="details-link" title="More Details">
                 <i className="bi bi-link-45deg"></i>
               </a>
             ) : (

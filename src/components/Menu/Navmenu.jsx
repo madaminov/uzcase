@@ -41,22 +41,19 @@ function Navmenu() {
   }, []);
 
   return (
-    <nav id="navmenu" className="navmenu">
-      <ul>
-        {navMenu.map((menu, index) => (
-          <li key={index}>
-            <a
-              href={menu.key}
-              onClick={() => handleClick(menu.key)}
-              className={activeKey === menu.key ? 'active' : ''}
-            >
-              {menu.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
-    </nav>
+    <ul>
+      {navMenu.map((menu, index) => (
+        <li key={index}>
+          <a
+            href={menu.key}
+            onClick={() => handleClick(menu.key)}
+            className={activeKey === menu.key ? 'active' : ''}
+          >
+            {menu.name}
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }
 

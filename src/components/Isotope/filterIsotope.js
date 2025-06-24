@@ -1,8 +1,8 @@
 const filterIsotope = [
   { key: '*', name: 'All' },
-  { key: 'filter-app', name: 'App' },
-  { key: 'filter-product', name: 'Product' },
-  { key: 'filter-branding', name: 'Branding' },
-  { key: 'filter-books', name: 'Books' },
+  { key: 'filter-websites', name: 'Websites' },
+  { key: 'filter-webapps', name: 'Web Apps' },
+  { key: 'filter-mobile', name: 'Mobile' },
+  { key: 'filter-startups', name: 'Startups' },
 ];
 export default filterIsotope;
