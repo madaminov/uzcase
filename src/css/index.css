@@ -265,6 +265,12 @@ h6 {
   color: var(--heading-color);
 }
 
+@media (max-width: 768px) {
+  .header .logo h1 {
+    font-size: 20px;
+  }
+}
+
 .header .btn-getstarted,
 .header .btn-getstarted:focus,
 .btn-getstarted, .btn-getstarted:focus {

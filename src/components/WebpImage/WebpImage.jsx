@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const WebpImage = ({
   src,
@@ -8,12 +8,15 @@ const WebpImage = ({
   loadingLazy = true,
 }) => {
   const [webpUrl, setWebpUrl] = useState(null);
+  const blobUrlRef = useRef(null);
 
   useEffect(() => {
     if (!src) return;
 
+    let isMounted = true;
+
     const img = new Image();
-    img.crossOrigin = 'Anonymous'; // важно для CORS (если нужно)
+    img.crossOrigin = 'anonymous'; // если CORS требуется
     img.onload = () => {
       const canvas = document.createElement('canvas');
       canvas.width = img.width;
@@ -24,43 +27,43 @@ const WebpImage = ({
 
       canvas.toBlob(
         (blob) => {
-          const blobUrl = URL.createObjectURL(blob);
-          setWebpUrl(blobUrl);
+          if (blob && isMounted) {
+            const url = URL.createObjectURL(blob);
+            blobUrlRef.current = url;
+            setWebpUrl(url);
+          }
         },
         'image/webp',
-        0.8 // quality
+        0.8
       );
     };
 
     img.onerror = () => {
-      console.error('Error loading image:', src);
+      if (isMounted) console.error('Error loading image:', src);
     };
 
     img.src = src;
 
-    // очистка blob при размонтировании
     return () => {
-      if (webpUrl) {
-        URL.revokeObjectURL(webpUrl);
+      isMounted = false;
+      if (blobUrlRef.current) {
+        URL.revokeObjectURL(blobUrlRef.current);
+        blobUrlRef.current = null;
       }
     };
-  }, [webpUrl, src]);
+  }, [src]);
 
-  return (
-    <>
-      {webpUrl ? (
-        <img
-          src={webpUrl}
-          alt={alt}
-          className={className}
-          style={style}
-          loading={loadingLazy ? 'lazy' : undefined}
-        />
-      ) : (
-        <span>Loading image…</span>
-      )}
-    </>
-  );
+  if (!src) return null;
+
+  return webpUrl ? (
+    <img
+      src={webpUrl}
+      alt={alt}
+      className={className}
+      style={style}
+      loading={loadingLazy ? 'lazy' : undefined}
+    />
+  ) : null;
 };
 
 export default WebpImage;

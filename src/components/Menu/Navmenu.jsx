@@ -25,6 +25,7 @@ function Navmenu() {
           const rect = section.getBoundingClientRect();
           if (rect.top <= 200 && rect.bottom >= 200) {
             current = item.key;
+            //window.location.hash = current;
           }
         }
       }

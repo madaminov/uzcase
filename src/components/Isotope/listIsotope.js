@@ -1,19 +1,19 @@
 const listIsotope = [
   {
     id: 1,
-    name: 'App 1',
-    description: 'Lorem ipsum, dolor sit amet consectetur',
+    name: 'Wmz',
+    description: 'Velikoluksky Mechanical Factory',
     filter: 'filter-websites',
-    link: '',
-    img: 'images/portfolio/app-1.jpg',
+    link: 'https://wmz.ru/',
+    img: 'images/portfolio/wmz.webp',
   },
   {
     id: 2,
-    name: 'Product 1',
-    description: 'Lorem ipsum, dolor sit amet consectetur',
-    filter: 'filter-websites filter-webapps',
-    link: '',
-    img: 'images/portfolio/product-1.jpg',
+    name: 'Kontakor',
+    description: 'Contact correction center',
+    filter: 'filter-websites',
+    link: 'https://kontakor.ru/',
+    img: 'images/portfolio/kontakor.webp',
   },
   {
     id: 3,

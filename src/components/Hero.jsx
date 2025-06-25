@@ -1,3 +1,4 @@
+import ButtonStarted from './Started/ButtonStarted';
 import WebpImage from './WebpImage/WebpImage';
 function Hero() {
   return (
@@ -13,10 +14,12 @@ function Hero() {
               We’re a team of developers building fast, responsive, and scalable
               websites for modern businesses
             </p>
-            <div className="d-flex">
-              <a href="#about" className="btn-get-started">
-              Message Us
-              </a>
+            <div className="d-flex">             
+              <ButtonStarted
+                href="#contact"
+                title="Message Us"
+                className="btn-get-started"
+              />
             </div>
           </div>
           <div

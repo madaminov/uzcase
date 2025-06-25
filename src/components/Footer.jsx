@@ -7,7 +7,11 @@ function Footer() {
         <div className="row">
           <div className="col-12 footer-about">
             <p className="text-center">
-              <img src={Logo} alt="UzCase" className="img-fluid" />
+              <img
+                src={Logo}
+                alt="UzCase"
+                className="img-fluid col-8 col-md-3"
+              />
             </p>
           </div>
 

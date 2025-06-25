@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
@@ -18,10 +19,27 @@ const SignupSchema = Yup.object().shape({
 
 const ContactForm = () => (
   <Formik
-    initialValues={{ name: '', email: '', subject: '' }}
+    initialValues={{ name: '', email: '', subject: '', message: '' }}
     validationSchema={SignupSchema}
-    onSubmit={(values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit={async (values, { setSubmitting, resetForm }) => {
+      try {
+        const response = await axios.post(
+          'http://modx-rest.local/mail.php',
+          values,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        ); // Replace with your API endpoint
+        console.log('Login successful:', response.data);
+        resetForm(); // Clear the form after successful submission
+      } catch (error) {
+        console.error('Login error:', error);
+        // Handle errors, e.g., display an error message to the user
+      } finally {
+        setSubmitting(false); // Reset submitting state
+      }
     }}
   >
     {({ errors, touched }) => (
@@ -53,7 +71,7 @@ const ContactForm = () => (
               name="email"
               type="email"
               className={
-                errors.name && touched.name
+                errors.email && touched.email
                   ? 'is-invalid form-control'
                   : 'form-control'
               }
@@ -71,7 +89,7 @@ const ContactForm = () => (
               name="subject"
               type="text"
               className={
-                errors.name && touched.name
+                errors.subject && touched.subject
                   ? 'is-invalid form-control'
                   : 'form-control'
               }
@@ -90,7 +108,7 @@ const ContactForm = () => (
               name="message"
               type="text"
               className={
-                errors.name && touched.name
+                errors.message && touched.message
                   ? 'is-invalid form-control'
                   : 'form-control'
               }

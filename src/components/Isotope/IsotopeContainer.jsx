@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import imagesLoaded from 'imagesloaded';
-import WebpImage from '../WebpImage/WebpImage';
+//import WebpImage from '../WebpImage/WebpImage';
 import Isotope from 'isotope-layout';
 
 const IsotopeContainer = (props) => {
@@ -17,19 +17,22 @@ const IsotopeContainer = (props) => {
       isotope.current = new Isotope(container, {
         itemSelector: '.isotope-item',
         layoutMode: 'masonry',
+        transitionDuration: '0.6s',
       });
     });
 
     return () => {
       isotope.current?.destroy();
-      imgLoad?.off?.(); // очистка imagesLoaded
+      imgLoad?.off?.();
     };
-  });
+  }, []);
 
   useEffect(() => {
-    if (filterKey === '*') isotope.current?.arrange({ filter: `*` });
-    else isotope.current?.arrange({ filter: `.${filterKey}` });
-  }, [filterKey, active]);
+    if (!isotope.current) return;
+    isotope.current.arrange({
+      filter: filterKey === '*' ? '*' : `.${filterKey}`,
+    });
+  }, [filterKey]);
 
   const handleFilterKeyChange = (key) => () => {
     setFilterKey(key);
@@ -59,25 +62,30 @@ const IsotopeContainer = (props) => {
               list.filter
             }
           >
-            <WebpImage
+            <img
               src={list.img}
-              alt={list.name}
               className="img-fluid"
-              style={{}}
-              loadingLazy={false}
+              loading="lazy"
+              alt={list.name}
             />
 
             <div className="portfolio-info">
               <h3>{list.name}</h3>
               <p>{list.description}</p>
+              {list.link ? (
+                <a
+                  href={list.link}
+                  className="details-link"
+                  title="More Details"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <i className="bi bi-link-45deg"></i>
+                </a>
+              ) : (
+                ''
+              )}
             </div>
-            {list.link ? (
-              <a href={list.link} className="details-link" title="More Details">
-                <i className="bi bi-link-45deg"></i>
-              </a>
-            ) : (
-              ''
-            )}
           </div>
         ))}
       </div>
