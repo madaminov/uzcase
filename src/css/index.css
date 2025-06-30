@@ -616,7 +616,7 @@ h6 {
   padding-top: 50px;
 }
 
-.footer .social-links a {
+.footer .social-links a, .social-links a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -630,7 +630,7 @@ h6 {
   transition: 0.3s;
 }
 
-.footer .social-links a:hover {
+.footer .social-links a:hover, .social-links a:hover {
   color: var(--accent-color);
   border-color: var(--accent-color);
 }
@@ -1201,6 +1201,11 @@ section,
 
 .portfolio .portfolio-item {
   position: relative;
+}
+
+.portfolio .portfolio-item img {
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
 }
 
 .portfolio .portfolio-item .portfolio-info {

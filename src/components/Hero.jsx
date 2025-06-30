@@ -9,12 +9,12 @@ function Hero() {
             className="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center"
             data-aos="fade-up"
           >
-            <h1>Elegant websites, built to perform</h1>
+            <h1>Apps that scale. Code that lasts.</h1>
             <p>
               We’re a team of developers building fast, responsive, and scalable
-              websites for modern businesses
+              websites and apps for modern businesses
             </p>
-            <div className="d-flex">             
+            <div className="d-flex">
               <ButtonStarted
                 href="#contact"
                 title="Message Us"

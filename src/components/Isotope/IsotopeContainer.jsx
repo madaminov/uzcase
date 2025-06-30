@@ -41,7 +41,7 @@ const IsotopeContainer = (props) => {
 
   return (
     <div className="isotope-layout">
-      <ul className="portfolio-filters isotope-filters">
+      <ul className="portfolio-filters isotope-filters d-none">
         {filters.map((filter, index) => (
           <li
             key={index}
@@ -63,7 +63,7 @@ const IsotopeContainer = (props) => {
             }
           >
             <img
-              src={list.img}
+              src={`${process.env.PUBLIC_URL}` + list.img}
               className="img-fluid"
               loading="lazy"
               alt={list.name}

@@ -8,7 +8,7 @@ const navMenu = [
   { key: '#contact', name: 'Contact' },
 ];
 
-function Navmenu() {
+function Navmenu({ iconSet = false }) {
   const [activeKey, setActiveKey] = useState('#hero');
 
   const handleClick = (key) => {
@@ -45,6 +45,7 @@ function Navmenu() {
     <ul>
       {navMenu.map((menu, index) => (
         <li key={index}>
+          {iconSet && <i className="bi bi-chevron-right"></i>}
           <a
             href={menu.key}
             onClick={() => handleClick(menu.key)}

@@ -9,7 +9,6 @@ const SignupSchema = Yup.object().shape({
     .min(2, 'Minimum number of characters 2')
     .max(250, 'Maximum 250 characters')
     .required('This field is required.'),
-  subject: Yup.string().max(250, 'Maximum 250 characters'),
   message: Yup.string()
     .min(2, 'Minimum number of characters 2')
     .max(250, 'Maximum 250 characters')
@@ -30,7 +29,7 @@ const ContactForm = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
             const response = await axios.post(
-              'http://modx-rest.local/mail.php',
+              'https://uzcase.tech/send-email',
               values,
               {
                 headers: {
@@ -89,24 +88,6 @@ const ContactForm = () => {
                 />
                 {errors.email && touched.email && (
                   <div className="text-danger">{errors.email}</div>
-                )}
-              </div>
-              <div className="col-md-12">
-                <label htmlFor="subject" className="pb-2">
-                  Subject
-                </label>
-                <Field
-                  name="subject"
-                  type="text"
-                  className={
-                    errors.subject && touched.subject
-                      ? 'is-invalid form-control'
-                      : 'form-control'
-                  }
-                  id="subject"
-                />
-                {errors.subject && touched.subject && (
-                  <div className="text-danger">{errors.subject}</div>
                 )}
               </div>
               <div className="col-md-12">
