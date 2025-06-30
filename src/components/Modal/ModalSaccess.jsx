@@ -45,9 +45,7 @@ const ModalSaccess = ({ show, onClose }) => {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content shadow">
           <div className="modal-header">
-            <h5 className="modal-title" id="successModalLabel">
-              Successfully!
-            </h5>
+            <h5 className="modal-title" id="successModalLabel"></h5>
             <button
               type="button"
               className="btn-close"

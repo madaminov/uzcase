@@ -6,25 +6,30 @@ const cors = require('cors');
 const app = express();
 const PORT = 5000;
 
+// Проверка переменных окружения
 if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
   console.error('EMAIL_USER и/или EMAIL_PASS не заданы в .env');
   process.exit(1);
 }
 
-app.use(express.json());
+// CORS-настройки
+const corsOptions = {
+  origin: 'https://uzcase.tech',
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type'],
+};
 
+// Использование CORS в зависимости от окружения
 if (process.env.NODE_ENV === 'development') {
   app.use(cors());
 } else {
-  app.use(
-    cors({
-      origin: 'https://uzcase.tech',
-      methods: ['POST'],
-      allowedHeaders: ['Content-Type'],
-    })
-  );
+  app.use(cors(corsOptions));
+  app.options('/send-email', cors(corsOptions)); // preflight для CORS
 }
 
+app.use(express.json());
+
+// Обработка POST-запроса на отправку письма
 app.post('/send-email', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -38,7 +43,7 @@ app.post('/send-email', async (req, res) => {
 
   const mailOptions = {
     from: `"${name}" <${process.env.EMAIL_USER}>`,
-    to: 'madaminov.d@gmail.com,o.o.kolesnikov@gmail.com,madaminov.d@yandex.ru',
+    to: 'madaminov.d@gmail.com,o.o.kolesnikov@gmail.com,madaminov.d@yandex.ru', // несколько получателей
     replyTo: email,
     subject: 'New message from site',
     html: `
@@ -60,6 +65,7 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
+// Запуск сервера
 app.listen(PORT, () => {
   console.log(`Сервер запущен на http://localhost:${PORT}`);
 });
